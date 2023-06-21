@@ -71,5 +71,16 @@ require_once('../../utils/databaseConnection.php');
 
       return $actorList;
     }
+
+    public static function deleteActor($id) {
+      $mysql = initConnectionDb();
+      $query = $mysql->query("DELETE FROM actores WHERE id=".$id);
+
+      $isSuccess = $query === TRUE;
+
+      $mysql->close();
+
+      return $isSuccess;
+    }
   }
 ?>

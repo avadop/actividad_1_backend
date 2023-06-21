@@ -19,8 +19,8 @@
 
                 if(count($platformList) > 0) {
             ?>
-            <h3>Listado de todas las plataformas</h3>
-            <table class="table">
+            <h3 style="margin-top:1.5em;">>Listado de todas las plataformas</h3>
+            <table class="table" style="margin-top:2rem;">
                 <thead>
                     <th>Id</th>
                     <th>Nombre</th>

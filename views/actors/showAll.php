@@ -2,12 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Biblioteca de Series</title>
+  <title>Biblioteca de Actores</title>
   <!-- Incluye los estilos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    th {text-align: center;}
+    td {text-align: center;}
+  </style>
 </head>
 <body>
     <div class="container">
@@ -19,8 +24,8 @@
 
                 if(count($actorList) > 0) {
             ?>
-            <h3>Listado de todos los actores</h3>
-            <table class="table">
+            <h3 style="margin-top:1.5em;">Listado de todos los actores</h3>
+            <table class="table" style="margin-top:2rem;">
                 <thead>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -39,15 +44,15 @@
                         <td><?php echo $actor->getApellidos();?> </td>
                         <td><?php echo $actor->getFechaNacimiento();?> </td>
                         <td><?php echo $actor->getNacionalidad();?> </td>
-                        <!-- <td>
-                            <div class="btn-group" role="group"`aria-label="Basic example">
+                        <td>
+                            <div class="btn-group" role="group">
                                 <a class="btn btn-success" href="edit.php?id=<?php echo $actor->getId();?>">Editar</a>
                                 <form name="delete_actor" action="delete.php" method="POST">
                                     <input type="hidden"  name="actorId" value="<?php echo $actor->getId();?>" />
                                     <button type="submit" class="btn btn-danger">Borrar</button>
                                 </form>
                             </div>
-                        </td> -->
+                        </td>
                     </tr>
                     <?php
                         }
@@ -62,7 +67,7 @@
                 } else {
             ?>
 
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:1.25rem;">
                 Aún no existen actores.
             </div>
             <?php
