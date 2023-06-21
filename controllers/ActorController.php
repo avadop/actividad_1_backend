@@ -1,7 +1,7 @@
 <?php
-  require_once('../models/Actor.php');
+  require_once('../../models/Actor.php');
 
-  function listActors() {
+  function listAllActors() {
     return Actor::getAllActors();
   }
 

@@ -1,5 +1,5 @@
 <?php
-require_once('../utils/databaseConnection.php');
+require_once('../../utils/databaseConnection.php');
 
   class Actor{
     private $id;
