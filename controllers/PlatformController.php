@@ -3,8 +3,7 @@
    
     function listAllPlatforms()
     {
-        $model = new Platform();
-        $platformList = $model->getAll();
+        $platformList = Platform::getAll();
         $platformObjectArray = [];
 
         foreach($platformList as $platformItem)
@@ -16,11 +15,11 @@
         return $platformObjectArray;
     }
 
-   /* function storePlatform($platformName)
+   function storePlatform($platformName)
     {
-        $newPlatform = new Platform(idPlatform: null, $platformName);
+        $newPlatform = new Platform(null, $platformName);
         $platformCreated = $newPlatform->store();
 
         return $platformCreated;
-    }*/
+    }
 ?>

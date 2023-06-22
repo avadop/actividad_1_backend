@@ -6,7 +6,7 @@
     private $id;
     private $name;
 
-    public function __construct($idPlatform = null, $namePlatform = null)
+    public function __construct($idPlatform, $namePlatform)
     {
       $this->id = $idPlatform;
       $this->name = $namePlatform;
@@ -32,7 +32,7 @@
       $this->name = $name;
     }
 
-    public function getAll()
+    public static function getAll()
     {
         $mysqli = initConnectionDb();
         
@@ -54,10 +54,11 @@
 
     public function store()
     {
-      $platformCreated = false;
-      $mysqli = $this->initConecctionDb();
 
-      if($resultInsert = $mysql->query( query: "INSERT INTO platforms (name) VALUES (' $this->name ')")) {
+      $platformCreated = false;
+      $mysqli = initConnectionDb();
+
+      if($resultInsert = $mysqli->query( query: "INSERT INTO platforms (name) VALUES (' $this->name ')")) {
         $platformCreated = true;
       }
 
