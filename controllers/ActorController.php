@@ -5,8 +5,9 @@
     $actorsList = Actor::getAllActors();
     
     foreach($actorsList as $actor) {
-      if($actor->getFechaNacimiento()){
-        $actor->setFechaNacimiento(date_format(date_create($actor->getFechaNacimiento()), 'd/m/Y'));
+      $birthDate = $actor->getBirthDate();
+      if($birthDate){
+        $actor->setBirthDate(date_format(date_create($birthDate), 'd/m/Y'));
       }
     }
 

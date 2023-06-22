@@ -40,10 +40,10 @@
                     ?>
                     <tr>
                         <td><?php echo $actor->getId();?> </td>
-                        <td><?php echo $actor->getNombre();?> </td>
-                        <td><?php echo $actor->getApellidos();?> </td>
-                        <td><?php echo $actor->getFechaNacimiento();?> </td>
-                        <td><?php echo $actor->getNacionalidad();?> </td>
+                        <td><?php echo $actor->getName();?> </td>
+                        <td><?php echo $actor->getSurnames();?> </td>
+                        <td><?php echo $actor->getBirthDate();?> </td>
+                        <td><?php echo $actor->getNacionality();?> </td>
                         <td>
                             <div class="btn-group" role="group">
                                 <a class="btn btn-success" href="edit.php?id=<?php echo $actor->getId();?>">Editar</a>

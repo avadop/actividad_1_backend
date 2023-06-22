@@ -3,17 +3,17 @@ require_once('../../utils/databaseConnection.php');
 
   class Actor{
     private $id;
-    private $nombre;
-    private $apellidos;
-    private $fechaNacimiento;
-    private $nacionalidad;
+    private $name;
+    private $surnames;
+    private $birthDate;
+    private $nacionality;
 
-    public function __construct($idActor, $nombreActor, $apellidosActor, $fechaNacimientoActor, $nacionalidadActor) {
-      $this->id = $idActor;
-      $this->nombre = $nombreActor;
-      $this->apellidos = $apellidosActor;
-      $this->fechaNacimiento = $fechaNacimientoActor;
-      $this->nacionalidad = $nacionalidadActor;
+    public function __construct($actorId, $actorName, $actorSurnames, $actorBirthDate, $actorNacionality) {
+      $this->id = $actorId;
+      $this->name = $actorName;
+      $this->surnames = $actorSurnames;
+      $this->birthDate = $actorBirthDate;
+      $this->nacionality = $actorNacionality;
     }
 
     public function getId() {
@@ -24,46 +24,46 @@ require_once('../../utils/databaseConnection.php');
       $this->id = $newId;
     }
 
-    public function getNombre() {
-      return $this->nombre;
+    public function getName() {
+      return $this->name;
     }
     
-    public function setNombre($newNombre) {
-      $this->nombre = $newNombre;
+    public function setName($newName) {
+      $this->name = $newName;
     }
 
-    public function getApellidos() {
-      return $this->apellidos;
+    public function getSurnames() {
+      return $this->surnames;
     }
     
-    public function setApellidos($newApellidos) {
-      $this->apellidos = $newApellidos;
+    public function setSurnames($newSurnames) {
+      $this->surnames = $newSurnames;
     }
 
-    public function getFechaNacimiento() {
-      return $this->fechaNacimiento;
+    public function getBirthDate() {
+      return $this->birthDate;
     }
     
-    public function setFechaNacimiento($newFechaNacimiento) {
-      $this->fechaNacimiento = $newFechaNacimiento;
+    public function setBirthDate($newBirthDate) {
+      $this->birthDate = $newBirthDate;
     }
 
-    public function getNacionalidad() {
-      return $this->nacionalidad;
+    public function getNacionality() {
+      return $this->nacionality;
     }
     
-    public function setNacionalidad($newNacionalidad) {
-      $this->nacionalidad = $newNacionalidad;
+    public function setNacionality($newNacionality) {
+      $this->nacionality = $newNacionality;
     }
 
     public static function getAllActors() {
       $mysql = initConnectionDb();
-      $query = $mysql->query("SELECT * FROM actores");
+      $query = $mysql->query("SELECT * FROM actors");
 
       $actorList = [];
   
       foreach($query as $item) {
-        $actor = new Actor($item['id'], $item['nombre'], $item['apellidos'], $item['fecha_nacimiento'], $item['nacionalidad']);
+        $actor = new Actor($item['id'], $item['name'], $item['surnames'], $item['birth_date'], $item['nacionality']);
         array_push($actorList, $actor);
       }
 
@@ -74,7 +74,7 @@ require_once('../../utils/databaseConnection.php');
 
     public static function deleteActor($id) {
       $mysql = initConnectionDb();
-      $query = $mysql->query("DELETE FROM actores WHERE id=".$id);
+      $query = $mysql->query("DELETE FROM actors WHERE id=".$id);
 
       $isSuccess = $query === TRUE;
 

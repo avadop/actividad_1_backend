@@ -29,7 +29,7 @@
               ¡Se ha borrado el actor con id <?php 
               echo $idActor; 
               ?> con éxito!
-            </div>            
+            </div>           
 
             <?php
                 } else {
@@ -41,6 +41,9 @@
             <?php
                 }
             ?>
+            <div>
+                <a class="btn btn-primary" href="./showAll.php">Atrás</a>
+            </div> 
         </div>
     </div>
 </body>
