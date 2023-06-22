@@ -1,96 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Biblioteca de Series</title>
   <!-- Incluye los estilos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  
+
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-    .button-margin { margin-left: 1rem;}
-    .card-style {width: 24.5rem; margin: 1rem;}
-    .button-full-width {width: 100%;}
+    .button-margin {
+      margin-left: 1rem;
+    }
+
+    .card-style {
+      width: 24.5rem;
+      margin: 1rem;
+    }
+
+    .button-full-width {
+      width: 100%;
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <h1>Biblioteca de Series</h1>
+    <div class="col-12">
+      <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
 
-    <h2>Idiomas</h2>
-    <ul>
+      <div style="display: flex; flex-wrap: wrap; margin-top:1rem;">
+        <div class="card border-warning card-style">
+          <div class="card-body">
+            <h2 class="card-title text-warning">Idiomas</h2>
+            <p class="card-text">Acceso a la lista de idiomas disponibles en la aplicación, desde donde se podrá editar,
+              borrar y añadir también.</p>
+            <div style="display: flex; justify-content: space-between;">
+              <a href="views/languages/showAll.php" class="btn button-full-width btn btn-warning">Mostrar idiomas</a>
+              <a href="views/languages/create.php" class="btn button-full-width btn btn-warning button-margin">Añadir
+                idioma</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-primary card-style">
+          <div class="card-body">
+            <h2 class="card-title text-primary">Plataformas</h2>
+            <p class="card-text">Acceso a la lista de plataformas disponibles en la aplicación, desde donde se podrá
+              editar, borrar y añadir también.</p>
+            <div style="display: flex; justify-content: space-between;">
+              <a href="views/platforms/showAll.php" class="btn button-full-width btn btn-primary">Mostrar
+                plataformas</a>
+              <a href="views/platforms/create.php" class="btn button-full-width btn btn-primary button-margin">Añadir
+                plataforma</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-style border-success">
+          <div class="card-body">
+            <h2 class="card-title text-success">Actores</h2>
+            <p class="card-text">Acceso a la lista de actores de la plataforma, desde donde se podrá editar, borrar y
+              añadir también.</p>
+            <div style="display: flex; justify-content: space-between;">
+              <a href="views/actors/showAll.php" class="btn button-full-width btn btn-success">Mostrar actores</a>
+              <a href="views/actors/create.php" class="btn button-full-width btn btn-success button-margin">Añadir
+                actor</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-style border-dark">
+          <div class="card-body">
+            <h2 class="card-title text-dark">Directores</h2>
+            <p class="card-text">Acceso a la lista de directores de la plataforma, desde donde se podrá editar, borrar y
+              añadir también.</p>
+            <div style="display: flex; justify-content: space-between;">
+              <a href="views/directors/showAll.php" class="btn btn button-full-width btn-dark">Mostrar directores</a>
+              <a href="views/directors/create.php" class="btn btn button-full-width btn-dark button-margin">Añadir
+                director</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-style border-danger">
+          <div class="card-body">
+            <h2 class="card-title text-danger">Series</h2>
+            <p class="card-text">Acceso a la lista de series disponibles en la aplicación, desde donde se podrá editar,
+              borrar y añadir también.</p>
+            <div style="display: flex; justify-content: space-between;">
+              <a href="views/series/showAll.php" class="btn btn button-full-width btn-danger">Mostrar series</a>
+              <a href="views/series/create.php" class="btn btn btn-danger  button-full-width button-margin">Añadir
+                serie</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <h2>Idiomas</h2>
+      <ul>
         <li><a href="views/languages/create.php">Crear Idioma</a></li>
         <li><a href="views/languages/edit.php">Editar Idioma</a></li>
         <li><a href="views/languages/showAll.php">Mostrar idiomas</a></li>
-    </ul>
-    
-    <h2>Plataformas</h2>
-    <ul>
+      </ul>
+
+      <h2>Plataformas</h2>
+      <ul>
         <li><a href="views/platforms/create.php">Crear plataformas</a></li>
         <li><a href="views/platforms/edit.php">Editar plataformas</a></li>
         <li><a href="views/platforms/showAll.php">Mostrar plataformas</a></li>
-    </ul>
-
-    <div style="display: flex; flex-wrap: wrap;">
-    <div class="card border-warning card-style">
-      <div class="card-body">
-        <h2 class="card-title text-warning">Idiomas</h2>
-        <p class="card-text">Acceso a la lista de idiomas disponibles en la aplicación, desde donde se podrá editar, borrar y añadir también.</p>
-        <div style="display: flex; justify-content: space-between;">
-          <a href="views/languages/showAll.php" class="btn button-full-width btn btn-warning">Mostrar idiomas</a>
-          <a href="views/languages/create.php" class="btn button-full-width btn btn-warning button-margin">Añadir idioma</a>
-        </div>
-      </div>
+      </ul>
     </div>
-
-    <div class="card border-primary card-style">
-      <div class="card-body">
-        <h2 class="card-title text-primary">Plataformas</h2>
-        <p class="card-text">Acceso a la lista de plataformas disponibles en la aplicación, desde donde se podrá editar, borrar y añadir también.</p>
-        <div style="display: flex; justify-content: space-between;">
-          <a href="views/platforms/showAll.php" class="btn button-full-width btn btn-primary">Mostrar plataformas</a>
-          <a href="views/platforms/create.php" class="btn button-full-width btn btn-primary button-margin">Añadir plataforma</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card card-style border-success">
-      <div class="card-body">
-        <h2 class="card-title text-success">Actores</h2>
-        <p class="card-text">Acceso a la lista de actores de la plataforma, desde donde se podrá editar, borrar y añadir también.</p>
-        <div style="display: flex; justify-content: space-between;">
-          <a href="views/actors/showAll.php" class="btn button-full-width btn btn-success">Mostrar actores</a>
-          <a href="views/actors/create.php" class="btn button-full-width btn btn-success button-margin">Añadir actor</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card card-style border-dark">
-      <div class="card-body">
-        <h2 class="card-title text-dark">Directores</h2>
-        <p class="card-text">Acceso a la lista de directores de la plataforma, desde donde se podrá editar, borrar y añadir también.</p>
-        <div style="display: flex; justify-content: space-between;">
-          <a href="views/directors/showAll.php" class="btn btn button-full-width btn-dark">Mostrar directores</a>
-          <a href="views/directors/create.php" class="btn btn button-full-width btn-dark button-margin">Añadir director</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card card-style border-danger">
-      <div class="card-body">
-        <h2 class="card-title text-danger">Series</h2>
-        <p class="card-text">Acceso a la lista de series disponibles en la aplicación, desde donde se podrá editar, borrar y añadir también.</p>
-        <div style="display: flex; justify-content: space-between;">
-          <a href="views/series/showAll.php" class="btn btn button-full-width btn-danger">Mostrar series</a>
-          <a href="views/series/create.php" class="btn btn btn-danger  button-full-width button-margin">Añadir serie</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   </div>
 </body>
+
 </html>
-
-

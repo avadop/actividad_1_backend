@@ -26,6 +26,7 @@
                 if(count($actorList) > 0) {
             ?>
             <h3 style="margin-top:1.5em;">Listado de todos los actores</h3>
+            <a class="btn btn-primary" style="margin-top:1em;" href="./create.php">Añadir nuevo actor</a>
             <table class="table" style="margin-top:2rem;">
                 <thead>
                     <th>Id</th>
@@ -61,9 +62,8 @@
                     ?>
                 </tbody>
             </table>
-            <div>
-                <a class="btn btn-primary" href="../../index.html">Atrás</a>
-            </div>              
+            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
+        
 
             <?php
                 } else {
