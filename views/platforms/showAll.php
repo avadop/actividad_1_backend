@@ -8,6 +8,9 @@
   
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .delete-button {background:none; border: none; color: white; padding: 0;}
+  </style>
 </head>
 <body>
     <div class="container">
@@ -37,9 +40,9 @@
                         <td>
                             <div class="btn-group" role="group"`aria-label="Basic example">
                                 <a class="btn btn-success" href="edit.php?id=<?php echo $platform->getId();?>">Editar</a>
-                                <form name="delete_platform" action="delete.php" method="POST">
+                                <form name="delete_platform" action="delete.php" method="POST" class="btn btn-danger">
                                     <input type="hidden"  name="platformId" value="<?php echo $platform->getId();?>" />
-                                    <button type="submit" class="btn btn-danger">Borrar</button>
+                                    <button type="submit" class="delete-button">Borrar</button>
                                 </form>
                             </div>
                         </td>

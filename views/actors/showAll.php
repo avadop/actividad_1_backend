@@ -12,6 +12,7 @@
   <style>
     th {text-align: center;}
     td {text-align: center;}
+    .delete-button {background:none; border: none; color: white; padding: 0;}
   </style>
 </head>
 <body>
@@ -32,6 +33,7 @@
                     <th>Apellidos</th>
                     <th>Fecha de nacimiento</th>
                     <th>Nacionalidad</th>
+                    <th>Acciones</th>
                 </thead>
                 <tbody>
                     <?php
@@ -47,9 +49,9 @@
                         <td>
                             <div class="btn-group" role="group">
                                 <a class="btn btn-success" href="edit.php?id=<?php echo $actor->getId();?>">Editar</a>
-                                <form name="delete_actor" action="delete.php" method="POST">
+                                <form name="delete_actor" action="delete.php" method="POST" class="btn btn-danger">
                                     <input type="hidden"  name="actorId" value="<?php echo $actor->getId();?>" />
-                                    <button type="submit" class="btn btn-danger">Borrar</button>
+                                    <button type="submit" class="delete-button">Borrar</button>
                                 </form>
                             </div>
                         </td>
