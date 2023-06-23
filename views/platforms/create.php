@@ -46,7 +46,7 @@
 
             if($platformCreated) {
             ?>
-            <div class="row">
+            <div class="row" style="margin-top:2rem; margin-left: 1rem">
                 <div class="alert alert-success" role="alert">
                     La plataforma ha sido creada correctamente.
                 </div>
@@ -54,7 +54,7 @@
             <?php
             } elseif ($sendData) { 
                 ?>
-                 <div class="row">
+                 <div class="row" style="margin-top:2rem; margin-left: 1rem">
                     <div class="alert alert-danger" role="alert">
                       No se ha podido crear la plataforma.
                     </div>
