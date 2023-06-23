@@ -22,4 +22,28 @@
 
         return $platformCreated;
     }
+
+    function updatePlatform($platformId, $platformName)
+    {
+        $newPlatform = new Platform($platformId, $platformName);
+        $platformCreated = $newPlatform->update();
+
+        return $platformCreated;
+    }
+
+    function getPlatformData($idPlatform) 
+    {
+        $platform = new Platform($idPlatform, '');
+        $platformObject = $platform->getItem();
+
+        return $platformObject;
+    }
+
+    function deletePlatform($idPlatform)
+    {
+        $platform = new Platform($idPlatform, '');
+        $platformObject = $platform->delete();
+
+        return $platformObject;
+    }
 ?>

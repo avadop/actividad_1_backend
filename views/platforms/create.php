@@ -12,10 +12,12 @@
 <body>
     <div class="container">
         <div class="col-12">
-            <h3 style="margin-top:1.5em;">Crear nueva plataformas</h3>
+            <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
+
+            <h3 style="margin-top:2rem; margin-left: 1rem">Crear nueva plataformas</h3>
         </div>  
 
-        <div class="col-12">
+        <div class="col-12" style="margin-top:2rem; margin-left: 1rem">
             <form name="create_platform" action="" method="POST">
                 <div class="mb-3">
                     <label for="platformName" class="form-label">Nombre plataforma</label>
@@ -61,7 +63,7 @@
             }
         ?>
 
-        <div class="col-12" style="margin-top: 1em;">
+        <div class="col-12" style="margin-top:2rem; margin-left: 1rem">
             <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
         </div> 
     </div>

@@ -32,6 +32,20 @@
       $this->name = $name;
     }
 
+    public function getItem()
+    {
+      $mysqli = initConnectionDb();
+      $query = $mysqli->query( query: "SELECT * FROM platforms WHERE id = " . $this->id);
+
+     foreach($query as $item) {
+        $itemObject = new Platform($item['id'], $item['name']);
+        break;
+      }
+      
+      $mysqli->close();
+      return $itemObject;
+    }
+
     public static function getAll()
     {
         $mysqli = initConnectionDb();
@@ -49,8 +63,7 @@
         $mysqli->close();
 
         return $listData;
-    }
-    
+    }   
 
     public function store()
     {
@@ -64,6 +77,45 @@
 
       $mysqli->close();
       return $platformCreated;
+    }
+
+    public function update()
+    {
+
+      $platformEdited = false;
+      $mysqli = initConnectionDb();
+
+      $platform = $this->getItem();
+      
+      if($platform) {
+        $update = $mysqli->query( query: "UPDATE platforms SET name = '" . $this->name . "' WHERE id=" . $this->id);
+
+        if($update){
+          $platformEdited = true;
+        }
+      }
+
+      $mysqli->close();
+      return $platformEdited;
+    }
+
+    public function delete()
+    {
+      $platformDeleted = false;
+      $mysqli = initConnectionDb();
+
+      $platform = $this->getItem();
+
+      if($platform) {
+        $deleted = $mysqli->query( query: "DELETE FROM platforms WHERE id=" . $this->id);
+
+        if($deleted){
+          $platformDeleted = true;
+        }
+      }
+
+      $mysqli->close();
+      return $platformDeleted;
     }
   }
 ?>

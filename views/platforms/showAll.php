@@ -22,8 +22,11 @@
 
                 if(count($platformList) > 0) {
             ?>
-            <h3 style="margin-top:1.5em;">Listado de todas las plataformas</h3>
-            <table class="table" style="margin-top:2rem;">
+            <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
+
+            <h3 style="margin-top:2rem; margin-left: 1rem;">Listado de todas las plataformas</h3>
+
+            <table class="table text-center" style="margin-top:2rem; margin-left: 1rem;">
                 <thead>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -40,6 +43,7 @@
                         <td>
                             <div class="btn-group" role="group"`aria-label="Basic example">
                                 <a class="btn btn-success" href="edit.php?id=<?php echo $platform->getId();?>">Editar</a>
+
                                 <form name="delete_platform" action="delete.php" method="POST" class="btn btn-danger">
                                     <input type="hidden"  name="platformId" value="<?php echo $platform->getId();?>" />
                                     <button type="submit" class="delete-button">Borrar</button>
@@ -52,8 +56,8 @@
                     ?>
                 </tbody>
             </table>
-            <div>
-                <a class="btn btn-primary" href="../../index.html">Atrás</a>
+            <div class="col-12" style="margin-top:2rem; margin-left: 1rem">
+                <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
             </div>              
 
             <?php
