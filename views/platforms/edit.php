@@ -74,7 +74,7 @@
         ?>
 
         <div class="col-12" style="margin-top: 1em;">
-            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
+            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="javascript:history.back()">Atrás</a>
         </div> 
     </div>
 </body>

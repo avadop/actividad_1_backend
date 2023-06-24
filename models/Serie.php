@@ -5,14 +5,16 @@ require_once('../../utils/databaseConnection.php');
     private $id;
     private $title;
     private $platform;
+    private $director;
     private $actorsList;
     private $audioLanguagesList;
     private $subtitlesLanguagesList;
 
-    public function __construct($serieId, $serieTitle, $seriePlatform, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList) {
+    public function __construct($serieId, $serieTitle, $seriePlatform, $serieDirector, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList) {
       $this->id = $serieId;
       $this->title = $serieTitle;
       $this->platform = $seriePlatform;
+      $this->director = $serieDirector;
       $this->actorsList = $serieActorsList;
       $this->audioLanguagesList = $serieAudioLanguagesList;
       $this->subtitlesLanguagesList = $serieSubtitlesLanguagesList;
@@ -41,6 +43,14 @@ require_once('../../utils/databaseConnection.php');
     public function setPlatform($newPlatform) {
       $this->platform = $newPlatform;
     }
+    
+    public function getDirector() {
+      return $this->director;
+    }
+    
+    public function setDirector($newDirector) {
+      $this->director = $newDirector;
+    }
 
     public function getActorsList() {
       return $this->actorsList;
@@ -64,6 +74,59 @@ require_once('../../utils/databaseConnection.php');
     
     public function setSubtitlesLanguagesList($newSubtitlesLanguagesList) {
       $this->subtitlesLanguagesList = $newSubtitlesLanguagesList;
+    }
+
+
+    public function getItem()
+    {
+      $mysqli = initConnectionDb();
+      $query = $mysqli->query( query: "SELECT * FROM series WHERE id = " . $this->id);
+
+     foreach($query as $item) {
+        $itemObject = new Serie($item['id'], $item['title'], $item['platform'], $item['director'], $item['actors'], $item['audio_language'], $item['subtitles_language']);
+        break;
+      }
+      
+      $mysqli->close();
+      return $itemObject;
+    }
+
+    public static function getAll()
+    {
+        $mysqli = initConnectionDb();
+        
+        $query = $mysqli->query( query: 'SELECT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d.name, d.surnames) as director, CONCAT(a.name, a.surnames) as actor, l.name as idioma_audio, l.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN actors a on a.id=s.actors INNER JOIN languages l on l.id=s.audio_language;');
+        $listData = [];
+      
+        if ($query) {
+            while ($row = $query->fetch_assoc()) {           
+                $itemObject = new Serie($row['id'], $row['titulo'], $row['plataforma'], $row['director'], $row['actor'], $row['idioma_audio'], $row['idioma_subtitulos']);
+                array_push($listData, $itemObject);
+            }
+        }
+        
+        $mysqli->close();
+        return $listData;
+    }   
+
+    public function update()
+    {
+
+      $serieEdited = false;
+      $mysqli = initConnectionDb();
+
+      $serie = $this->getItem();
+      
+      if($platform) {
+        $update = $mysqli->query( query: "UPDATE series SET name = '" . $this->name . "' WHERE id=" . $this->id);
+
+        if($update){
+          $platformEdited = true;
+        }
+      }
+
+      $mysqli->close();
+      return $platformEdited;
     }
   }
 ?>
