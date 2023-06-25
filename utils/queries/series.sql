@@ -1,5 +1,5 @@
 --create table series
-CREATE TABLE `actividad1_backend`.`series` (`id` INT NULL AUTO_INCREMENT , `title` VARCHAR(256) NOT NULL , `platform` INT NOT NULL , `director` INT NOT NULL , `actors` INT NOT NULL , `audio_language` INT NOT NULL , `subtitles_language` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `actividad1_backend`.`series` (`id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(256) NOT NULL , `platform` INT NOT NULL , `director` INT NOT NULL , `actors` INT NOT NULL , `audio_language` INT NOT NULL , `subtitles_language` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 -- alter table 
 ALTER TABLE `series` ADD FOREIGN KEY (`platform`) REFERENCES `platforms`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 

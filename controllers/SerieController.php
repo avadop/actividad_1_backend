@@ -2,17 +2,8 @@
      require_once('../../models/Serie.php');
 
      function listAllSeries()
-     {
-         $serieList = Serie::getAll();
-         $serieObjectArray = [];
- 
-         foreach($serieList as $serieItem)
-         {
-             $serieObject = new Serie($serieItem->getId(), $serieItem->getTitle(), $serieItem->getPlatform(), $serieItem->getDirector(), $serieItem->getActorsList(), $serieItem->getAudioLanguagesList(), $serieItem->getSubtitlesLanguagesList());
-             array_push($serieObjectArray, $serieObject);
-         }
-         
-         return $serieObjectArray;
+     {         
+        return Serie::getAll();
      }
 
      function updateSerie($platformId, $platformName)
