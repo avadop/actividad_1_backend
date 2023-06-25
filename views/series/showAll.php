@@ -22,11 +22,11 @@
 
                 if(count($serieList) > 0) {
             ?>
-            <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
+            <h1 style="margin-top:2rem;">Biblioteca de Series</h1>
 
-            <h3 style="margin-top:2rem; margin-left: 1rem;">Listado de todas las series</h3>
+            <h3 style="margin-top:2rem;">Listado de todas las series</h3>
 
-            <table class="table text-center" style="margin-top:2rem; margin-left: 1rem;">
+            <table class="table text-center" style="margin-top:2rem;">
                 <thead>
                     <th>Id</th>
                     <th>Título</th>
@@ -75,8 +75,8 @@
                 } else {
             ?>
 
-            <div class="alert alert-warning" role="alert">
-                Aún no existen platafseriesormas.
+            <div class="alert alert-warning" style="margin-top:2rem;  font-size:1.25rem;" role="alert">
+                Aún no existen series.
             </div>
             <?php
                 }

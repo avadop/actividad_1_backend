@@ -25,6 +25,8 @@
 
                 if(count($actorList) > 0) {
             ?>
+            <h1 style="margin-top:2rem;">Biblioteca de Series</h1>
+
             <h3 style="margin-top:1.5em;">Listado de todos los actores</h3>
             <a class="btn btn-primary" style="margin-top:1em;" href="./create.php">Añadir nuevo actor</a>
             <table class="table" style="margin-top:2rem;">

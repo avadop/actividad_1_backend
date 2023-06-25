@@ -64,7 +64,7 @@
                 } else {
             ?>
 
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" style="margin-top:2rem;  font-size:1.25rem;" role="alert">
                 Aún no existen plataformas.
             </div>
             <?php

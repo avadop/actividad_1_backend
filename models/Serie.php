@@ -128,5 +128,16 @@ require_once('../../utils/databaseConnection.php');
       $mysqli->close();
       return $platformEdited;
     }
+
+    public static function deleteSerie($id) {
+      $mysql = initConnectionDb();
+      $query = $mysql->query("DELETE FROM series WHERE id=".$id);
+
+      $isSuccess = $query === TRUE;
+
+      $mysql->close();
+
+      return $isSuccess;
+    }
   }
 ?>

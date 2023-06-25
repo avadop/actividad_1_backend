@@ -21,4 +21,8 @@
  
          return $serieObject;
      }
+
+     function deleteSerie($id) {
+        return Serie::deleteSerie($id);
+    }
 ?>

@@ -9,4 +9,4 @@ ALTER TABLE `series` ADD FOREIGN KEY (`subtitles_language`) REFERENCES `language
 ALTER TABLE `series` ADD FOREIGN KEY (`actors`) REFERENCES `actors`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 -- insert into series
-INSERT INTO `series`(`title`, `platform`, `director`, `actors`, `audio_language`, `subtitles_language`) VALUES ('Título serie',1,1,1,1,1);
+INSERT INTO `series`(`title`, `platform`, `director`, `actors`, `audio_language`, `subtitles_language`) VALUES ('Título serie',1,1,1,1,2);
