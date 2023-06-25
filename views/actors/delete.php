@@ -36,7 +36,7 @@
             ?>
 
             <div class="alert alert-danger" role="alert" style="margin-top:1rem; font-size:1.25rem;">
-                No se ha podido borrar el actor. Ha habido algún problema.
+                No se ha podido borrar el actor. Si alguna serie tiene el actor asociado no se podrá borrar. 
             </div>
             <?php
                 }

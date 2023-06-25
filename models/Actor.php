@@ -74,9 +74,14 @@ require_once('../../utils/databaseConnection.php');
 
     public static function deleteActor($id) {
       $mysql = initConnectionDb();
-      $query = $mysql->query("DELETE FROM actors WHERE id=".$id);
 
-      $isSuccess = $query === TRUE;
+      try {
+        $query = $mysql->query("DELETE FROM actors WHERE id=".$id);
+        $isSuccess = $query === TRUE;
+      }
+      catch (Exception $e) {
+        $isSuccess = false;
+      }
 
       $mysql->close();
 
