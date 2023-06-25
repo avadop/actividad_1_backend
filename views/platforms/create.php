@@ -21,10 +21,10 @@
             <form name="create_platform" action="" method="POST">
                 <div class="mb-3">
                     <label for="platformName" class="form-label">Nombre plataforma</label>
-                    <input id="platformName" name="platformName" type="text" placeholder="Introduce el nombre de la plataforma" class="form-control" require/>
+                    <input id="platformName" name="platformName" type="text" placeholder="Introduce el nombre de la plataforma" class="form-control" required/>
                 </div>
 
-                <button type="submit" value="Crear" class="btn btn-success" name="createBtn" style="float: right;">Crear</button>
+                <input type="submit" value="Crear" class="btn btn-success" name="createBtn" style="float: right;">Crear</input>
             </form>         
         </div>        
 

@@ -18,4 +18,15 @@
     return Actor::deleteActor($id);
   }
 
+  function createActor($name, $surnames, $date, $nacionality) {
+    $createSuccess = false;
+
+    if($name && $surnames) {
+      $newActor = new Actor(null,$name, $surnames, $date, $nacionality);
+      $createSuccess = $newActor->createActor();
+    }
+
+    return $createSuccess;
+  }
+
 ?>

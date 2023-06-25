@@ -82,5 +82,38 @@ require_once('../../utils/databaseConnection.php');
 
       return $isSuccess;
     }
+
+    public function createActor() {
+      $mysql = initConnectionDb();
+      $isSuccess = false;
+
+      // Si no hay un actor todavía con ese nombre y apellido, lo crea
+      if(!$this->actorAlreadyExists()) {
+        $birthDateCheck = $this->birthDate ? "'$this->birthDate'": 'NULL';
+        $nacionalityCheck = $this->nacionality ? "'$this->nacionality'": 'NULL';
+  
+        $query = "INSERT INTO actors (name, surnames, birth_date, nacionality) VALUES ('$this->name', '$this->surnames',".$birthDateCheck.",".$nacionalityCheck.");";
+        $queryResult = $mysql->query($query);
+  
+        $isSuccess = $queryResult === TRUE;
+      }
+
+      $mysql->close();
+
+      return $isSuccess;
+    }
+
+    public function actorAlreadyExists() {
+      $mysql = initConnectionDb();
+
+      $query = "SELECT * FROM actors WHERE name='$this->name' AND surnames='$this->surnames';";
+      $queryResult = $mysql->query($query);
+
+      $totalElements = mysqli_num_rows( $queryResult);
+
+      $mysql->close();
+
+      return $totalElements > 0;
+    }
   }
 ?>

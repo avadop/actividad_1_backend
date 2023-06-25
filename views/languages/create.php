@@ -21,11 +21,11 @@
             <form name="create_language" action="" method="POST">
                 <div class="mb-3">
                     <label for="languageName" class="form-label">Nombre Idioma</label>
-                    <input id="languageName" name="languageName" type="text" placeholder="Introduce el nombre del idioma" class="form-control" require/>
+                    <input id="languageName" name="languageName" type="text" placeholder="Introduce el nombre del idioma" class="form-control" required/>
                 </div>
                 <div class="mb-3">
                     <label for="languageIsoCode" class="form-label">Código ISO</label>
-                    <input id="languageIsoCode" name="languageIsoCode" type="text" placeholder="Introduce el código ISO del idioma" class="form-control" require/>
+                    <input id="languageIsoCode" name="languageIsoCode" type="text" placeholder="Introduce el código ISO del idioma" class="form-control" required/>
                 </div>
 
                 <button type="submit" value="Crear" class="btn btn-success" name="createBtn" style="float: right;">Crear</button>
