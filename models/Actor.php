@@ -73,15 +73,19 @@ require_once('../../utils/databaseConnection.php');
     }
 
     public static function deleteActor($id) {
+      $isSuccess = false;
       $mysql = initConnectionDb();
 
-      //Hacemos try catch, en caso de que se quiera borrar y tenga una serie asociada, salta una excepción.
-      try {
-        $query = $mysql->query("DELETE FROM actors WHERE id=".$id);
-        $isSuccess = $query === TRUE;
-      }
-      catch (Exception $e) {
-        $isSuccess = false;
+      // Nos aseguramos de que el actor existe para intentar borrar
+      if(Actor:: getSingleActor($id)){
+        //Hacemos try catch, en caso de que se quiera borrar y tenga una serie asociada, salta una excepción.
+        try { 
+          $query = $mysql->query("DELETE FROM actors WHERE id=".$id);
+          $isSuccess = $query === TRUE;
+        }
+        catch (Exception $e) {
+          $isSuccess = false;
+        }
       }
 
       $mysql->close();
@@ -90,6 +94,7 @@ require_once('../../utils/databaseConnection.php');
     }
 
     public static function getSingleActor($actorId) {
+      $actor = null;
       $mysql = initConnectionDb();
 
       $query = $mysql->query("SELECT * FROM actors WHERE id=".$actorId);

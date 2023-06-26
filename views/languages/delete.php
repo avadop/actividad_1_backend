@@ -32,7 +32,7 @@
                 ?>
                  <div class="row" style="margin-top:2rem; margin-left: 1rem">
                     <div class="alert alert-danger" role="alert">
-                      No se ha podido eliminar el idioma.
+                      No se ha podido eliminar el idioma. Si alguna serie tiene el idioma asociado no se podrá borrar. 
                     </div>
                 </div>
                 <?php

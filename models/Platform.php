@@ -107,10 +107,15 @@
       $platform = $this->getItem();
 
       if($platform) {
-        $deleted = $mysqli->query( query: "DELETE FROM platforms WHERE id=" . $this->id);
+        try {
+          $deleted = $mysqli->query( query: "DELETE FROM platforms WHERE id=" . $this->id);
 
-        if($deleted){
-          $platformDeleted = true;
+          if($deleted){
+            $platformDeleted = true;
+          }
+        }
+        catch (Exception $e) {
+          $platformDeleted = false;
         }
       }
 

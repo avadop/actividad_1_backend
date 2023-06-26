@@ -119,10 +119,14 @@
       $language = $this->getItem();
 
       if($language) {
-        $deleted = $mysqli->query( query: "DELETE FROM languages WHERE id=" . $this->id);
+        try{
+          $deleted = $mysqli->query( query: "DELETE FROM languages WHERE id=" . $this->id);
 
-        if($deleted){
-          $languageDeleted = true;
+          if($deleted){
+            $languageDeleted = true;
+          }
+        } catch (Exception $e) {
+          $languageDeleted = false;
         }
       }
 

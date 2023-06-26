@@ -32,7 +32,7 @@
                 ?>
                  <div class="row">
                     <div class="alert alert-danger" role="alert">
-                      No se ha podido eliminar la plataforma.
+                      No se ha podido eliminar la plataforma. Si alguna serie tiene la plataforma asociada no se podrá borrar. 
                     </div>
                 </div>
                 <?php
