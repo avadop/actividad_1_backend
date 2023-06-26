@@ -3,7 +3,7 @@ CREATE TABLE directores (
     nombre varchar(255) NOT NULL,
     apellidos varchar(255) NOT NULL,
     fecha_nacimiento DATE,
-    nacionalidad varchar(255),
+    nacionalidad varchar(255)
 );
 
 -- inserts into directores
