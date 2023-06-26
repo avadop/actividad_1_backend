@@ -75,12 +75,48 @@ require_once('../../utils/databaseConnection.php');
     public static function deleteActor($id) {
       $mysql = initConnectionDb();
 
+      //Hacemos try catch, en caso de que se quiera borrar y tenga una serie asociada, salta una excepción.
       try {
         $query = $mysql->query("DELETE FROM actors WHERE id=".$id);
         $isSuccess = $query === TRUE;
       }
       catch (Exception $e) {
         $isSuccess = false;
+      }
+
+      $mysql->close();
+
+      return $isSuccess;
+    }
+
+    public static function getSingleActor($actorId) {
+      $mysql = initConnectionDb();
+
+      $query = $mysql->query("SELECT * FROM actors WHERE id=".$actorId);
+
+      foreach($query as $item) {
+        $actor = new Actor($item['id'],$item['name'], $item['surnames'],$item['birth_date'],$item['nacionality']);
+        break;
+      }
+
+      $mysql->close();
+
+      return $actor;
+    }
+
+    public function editActor() {
+      $mysql = initConnectionDb();
+      $isSuccess = false;
+
+      // Comprueba que exista el objeto con ese id.
+      if(Actor::getSingleActor($this->id)) {
+        $birthDateCheck = $this->birthDate ? "'$this->birthDate'": 'NULL';
+        $nacionalityCheck = $this->nacionality ? "'$this->nacionality'": 'NULL';
+  
+        $query = "UPDATE actors SET name='$this->name', surnames='$this->surnames', birth_date=".$birthDateCheck.", nacionality =".$nacionalityCheck." WHERE id=".$this->id;
+        $queryResult = $mysql->query($query);
+  
+        $isSuccess = $queryResult === TRUE;
       }
 
       $mysql->close();
@@ -108,7 +144,7 @@ require_once('../../utils/databaseConnection.php');
       return $isSuccess;
     }
 
-    public function actorAlreadyExists() {
+    private function actorAlreadyExists() {
       $mysql = initConnectionDb();
 
       $query = "SELECT * FROM actors WHERE name='$this->name' AND surnames='$this->surnames';";

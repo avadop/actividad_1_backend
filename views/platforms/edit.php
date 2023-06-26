@@ -20,7 +20,7 @@
             ?>
 
         <div class="col-12">
-            <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
+            <h1 style="margin-top:2rem;">Biblioteca de Series</h1>
 
             <h3 style="margin-top:1.5em;">Editar plataforma</h3>
         </div>  
@@ -53,9 +53,10 @@
             }
 
             if($platformEdited) {
+                header( "refresh:1.5;url=showAll.php" );
             ?>
             <div class="row">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success" style=" width: 65rem;" role="alert">
                     La plataforma ha sido editada correctamente.
                 </div>
             </div>
@@ -65,7 +66,7 @@
             } elseif ($sendData) { 
                 ?>
                  <div class="row">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger" style=" width: 65rem;" role="alert">
                       No se ha podido editar la plataforma.
                     </div>
                 </div>

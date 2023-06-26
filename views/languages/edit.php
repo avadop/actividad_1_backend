@@ -57,8 +57,9 @@
             }
 
             if($languageEdited) {
+                header( "refresh:1.5;url=showAll.php" );
             ?>
-            <div class="row" style="margin-top:2rem; margin-left: 1rem;">
+            <div class="row" style="margin-top:2rem; margin-left: 1rem; width: 65rem;">
                 <div class="alert alert-success" role="alert">
                     El idioma ha sido editado correctamente.
                 </div>
@@ -68,7 +69,7 @@
 
             } elseif ($sendData) { 
                 ?>
-                 <div class="row" style="margin-top:2rem; margin-left: 1rem;">
+                 <div class="row" style="margin-top:2rem; margin-left: 1rem; width: 65rem;">
                     <div class="alert alert-danger" role="alert">
                       No se ha podido editar el idioma.
                     </div>

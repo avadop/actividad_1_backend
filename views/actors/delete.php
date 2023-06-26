@@ -41,7 +41,7 @@
             <?php
                 }
             ?>
-            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
+            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="showAll.php">Atrás</a>
 
         </div>
     </div>

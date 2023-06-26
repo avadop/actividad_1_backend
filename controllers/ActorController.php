@@ -29,4 +29,19 @@
     return $createSuccess;
   }
 
+  function getActorById($actorId) {
+    return Actor::getSingleActor($actorId);
+  }
+
+  function editActor($id,$name, $surnames, $birthDate, $nacionality){
+    $editSuccess = false;
+
+    if($name && $surnames) {
+      $newActor = new Actor($id,$name, $surnames, $birthDate, $nacionality);
+      $editSuccess = $newActor->editActor();
+    }
+
+    return $editSuccess;
+  }
+
 ?>
