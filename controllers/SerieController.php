@@ -6,9 +6,9 @@
         return Serie::getAll();
      }
 
-     function updateSerie($platformId, $platformName)
+     function updateSerie($serieId, $serieTitle, $seriePlatform, $seriesDirector, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList)
      {
-         $newSerie = new Platform($serieId, $serieTitle, $seriePlatform, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList);
+         $newSerie = new Serie($serieId, $serieTitle, $seriePlatform, $seriesDirector, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList);
          $serieCreated = $newSerie->update();
  
          return $serieCreated;
@@ -16,7 +16,7 @@
 
      function getSerieData($idSerie) 
      {
-         $serie = new Serie($idSerie, '', '', '', '', '', '');
+         $serie = new Serie($idSerie, '', '', '', '', '', '', '');
          $serieObject = $serie->getItem();
  
          return $serieObject;

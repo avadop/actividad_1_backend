@@ -22,11 +22,13 @@
 
                 if(count($serieList) > 0) {
             ?>
-            <h1 style="margin-top:2rem;">Biblioteca de Series</h1>
+             <h1 style="margin-top:2rem; margin-left: 1rem;">
+                <a class="text-decoration-none" href="../../index.html">Biblioteca de Series</a>
+             </h1>
 
-            <h3 style="margin-top:2rem;">Listado de todas las series</h3>
+            <h3 style="margin-top:2rem; margin-left: 1rem;">Listado de todas las series</h3>
 
-            <table class="table text-center" style="margin-top:2rem;">
+            <table class="table text-center" style="margin-top:2rem; margin-left: 1rem;">
                 <thead>
                     <th>Id</th>
                     <th>Título</th>

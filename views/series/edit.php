@@ -30,7 +30,9 @@
             ?>
 
         <div class="col-12">
-            <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
+            <h1 style="margin-top:2rem; margin-left: 1rem;">
+                <a class="text-decoration-none" href="index.html">Biblioteca de Series</a>
+             </h1>
 
             <h3 style="margin-top:2rem; margin-left: 1rem;">Editar serie</h3>
         </div>  
@@ -74,7 +76,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="serieActor" class="form-label">Actores</label>
-                    <select id="serieActor" name="serieActor" class="form-select" aria-label="Select actores" multiple>
+                    <select id="serieActor" name="serieActor[]" class="form-select" aria-label="Select actores" multiple>
                         
                         <?php
                             foreach($actorList as $actor)
@@ -90,7 +92,7 @@
 
                 <div class="mb-3">
                     <label for="serieLanguageAudio" class="form-label">Idiomas disponibles audio</label>
-                    <select id="serieLanguageAudio" name="serieLanguageAudio" class="form-select" aria-label="Select language audio" multiple>
+                    <select id="serieLanguageAudio" name="serieLanguageAudio[]" class="form-select" aria-label="Select language audio" multiple>
                         
                         <?php
                             foreach($languageList as $language)
@@ -106,7 +108,7 @@
 
                 <div class="mb-3">
                     <label for="serieLanguageSubtitles" class="form-label">Idiomas disponibles subtítulos</label>
-                    <select id="serieLanguageSubtitles" name="serieLanguageSubtitles" class="form-select" aria-label="Select language subtitles" multiple>
+                    <select id="serieLanguageSubtitles" name="serieLanguageSubtitles[]" class="form-select" aria-label="Select language subtitles" multiple>
                         
                         <?php
                             foreach($languageList as $language)

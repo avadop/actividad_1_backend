@@ -95,7 +95,7 @@ require_once('../../utils/databaseConnection.php');
     {
         $mysqli = initConnectionDb();
         
-        $query = $mysqli->query( query: "SELECT s.id as id, s.title as titulo, p.name as plataforma, CONCAT_WS(' ',d.name, d.surnames) as director, CONCAT_WS(' ',a.name, a.surnames) as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN actors a on a.id=s.actors INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;");
+        $query = $mysqli->query( query: 'SELECT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d.name, d.surnames) as director, CONCAT(a.name, a.surnames) as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN actors a on a.id=s.actors INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;');
         $listData = [];
       
         if ($query) {
@@ -117,16 +117,16 @@ require_once('../../utils/databaseConnection.php');
 
       $serie = $this->getItem();
       
-      if($platform) {
-        $update = $mysqli->query( query: "UPDATE series SET name = '" . $this->name . "' WHERE id=" . $this->id);
+      if($serie) {
+        $update = $mysqli->query( query: "UPDATE series SET title = '" . $this->title . "', platform = '" . $this->platform . "', director = '" . $this->director . "', actors = '" . $this->actors . "', audio_language = '" . $this->audio_language . "', subtitles_language = '" . $this->subtitles_language . "' WHERE id=" . $this->id);
 
         if($update){
-          $platformEdited = true;
+          $serieEdited = true;
         }
       }
 
       $mysqli->close();
-      return $platformEdited;
+      return $serieEdited;
     }
 
     public static function deleteSerie($id) {
