@@ -31,6 +31,17 @@ function saveDirector($name, $lastName, $dateOfBirth, $nationality) {
 function getDirectorById($idDirector) {
     return Director::getSingleDirector($idDirector);
   }
+
+  function editDirector($id,$name, $lastName, $birthDate, $nacionality){
+    $editSuccess = false;
+
+    if($name && $lastName) {
+      $newActor = new Director($id,$name, $lastName, $birthDate, $nacionality);
+      $editSuccess = $newActor->editDirector();
+    }
+
+    return $editSuccess;
+  }
   
 ?>
 

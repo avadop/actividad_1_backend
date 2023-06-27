@@ -20,12 +20,23 @@
                 $actorObject = getActorById($idActor);
             ?>
 
-            <h1 style="margin-top:2rem;">Biblioteca de Series</h1>
+            <h1 style="margin-top:2rem; margin-left: 1rem;">
+                <a class="text-decoration-none" href="../../index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
+            </h1>
 
-            <h3 style="margin-top:2rem;">Editar un actor</h3>
+            <h3 style="margin-top:2rem; margin-left: 1rem;">
+                <i class="bi bi-table"></i>
+                Editar un actor
+            </h3>
         </div>  
-
-        <div class="col-12" style="margin-top:2rem;">
+        <?php
+                if($actorObject) {
+            ?>
+        <div class="col-12" style="margin-top:2rem; margin-left: 1rem;">
+            
             <form name="edit_actor" action="" method="POST">
                 <div class="mb-3">
                     <label for="actorName" class="form-label">Nombre actor</label>
@@ -56,8 +67,7 @@
                 </div>
 
                 <button type="submit" value="Editar" class="btn btn-success" name="editActorBtn" style="float: right; margin-top: 1rem;">Editar</button>
-            </form>         
-        </div>
+            </form>        
         
         <?php
             require_once('../../controllers/ActorController.php');
@@ -94,8 +104,17 @@
             }
           }
         ?>
+         
+         </div>
+         <?php
+                }
+                else {
+                $message = "El actor que deseas editar no existe.";
+                echo '<div class="alert alert-danger" role="alert" style="margin-top: 1rem;">' . $message . '</div>';
+            }
+        ?>
 
-        <div class="col-12" style="margin-top:2rem;">
+        <div class="col-12" style="margin-top:2rem; margin-left: 1rem;">
             <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="showAll.php">Atrás</a>
         </div> 
     </div>
