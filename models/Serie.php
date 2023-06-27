@@ -96,7 +96,7 @@ require_once('../../utils/databaseConnection.php');
     {
         $mysqli = initConnectionDb();
         
-        $query = $mysqli->query('SELECT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d.name, d.surnames) as director, CONCAT(a.name, a.surnames) as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN actors a on a.id=s.actors INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;');
+        $query = $mysqli->query( query: "SELECT DISTINCT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d._name,' ', d.last_name) as director, '' as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;");
         $listData = [];
       
         if ($query) {

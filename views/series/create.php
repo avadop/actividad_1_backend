@@ -19,11 +19,13 @@
                 require_once('../../controllers/DirectorController.php');
                 require_once('../../controllers/ActorController.php');
                 require_once('../../controllers/LanguageController.php');
+				require_once('../../controllers/SeriesActorsController.php');
 
                 $platformList = listAllPlatforms();
                 $directorList = listAllDirector();
                 $actorList = listAllActors();
                 $languageList = listAllLanguages();
+				
                 if ($_SERVER["REQUEST_METHOD"] == "POST") 
                 {
                     if (isset($_POST['serieTitle']) && isset($_POST['seriePlatform']) && isset($_POST['serieDirector'])&& isset($_POST['serieActores'])  && isset($_POST['serieLanguageAudio'])&& isset($_POST['serieLanguageSubtitles'])) {
@@ -102,18 +104,10 @@
                     foreach ($actorList as $actor) {
                                                
                         $nombreActor = $actor->getName() . ' ' . $actor->getSurnames();
-                        $isChecked = false;
-
-                        foreach ($actorsBySerieList as $actorBySerie) {
-             
-                            if ($actorBySerie->getActor() === $actor->getId()) {
-                                $isChecked = true;
-                                break;
-                            }
-                        }
+           
                     ?>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="actor_<?php echo $actor->getId(); ?>" name="serieActores[]" value="<?php echo $actor->getId(); ?>" <?php if ($isChecked) echo "checked"; ?>>
+                            <input type="checkbox" id="actor_<?php echo $actor->getId(); ?>" name="serieActores[]" value="<?php echo $actor->getId(); ?>">
                             <label for="actor_<?php echo $actor->getId(); ?>"><?php echo $nombreActor; ?></label>
                         </div>
                     <?php

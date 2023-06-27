@@ -22,7 +22,7 @@
                 require_once('../../controllers/SeriesActorsController.php');
 
                 $platformList = listAllPlatforms();
-                $directorList = listAllDirectors();
+                $directorList = listAllDirector();
                 $actorList = listAllActors();
                 $languageList = listAllLanguages();
 
