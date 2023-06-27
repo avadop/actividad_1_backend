@@ -14,6 +14,7 @@
   <style>
     th {text-align: center;}
     td {text-align: center;}
+    .delete-button {background:none; border: none; color: white; padding: 0;}
   </style>
 </head>
 <body>
@@ -61,11 +62,12 @@
                         <td><?php echo $director->getNationality();?></td>
                     <td>
                         <div class="btn-group" role="group">
-                        <a class="btn btn-success" href="edit.php?id=<?php echo $director->getId();?>">Editar</a>
-                        <form name="delete_director" action="delete.php" method="POST">
-                        <input type="hidden" name="directorId" value="<?php echo $director->getId();?>" />
-                        <button type="submit" class="btn btn-danger">Borrar</button>
-                        </form>
+                            <a class="btn btn-success" href="edit.php?id=<?php echo $director->getId();?>">Editar</a>
+
+                            <form name="delete_director" action="delete.php" method="POST" class="btn btn-danger">
+                                <input type="hidden"  name="directorId" value="<?php echo $director->getId();?>" />
+                                <button type="submit" class="delete-button">Borrar</button>
+                            </form>
                         </div>
                     </td>
                     </tr>

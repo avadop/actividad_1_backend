@@ -47,6 +47,8 @@
     public function getItem()
     {
       $mysqli = initConnectionDb();
+      $itemObject = null;
+
       $query = $mysqli->query( query: "SELECT * FROM languages WHERE id = " . $this->id);
 
      foreach($query as $item) {

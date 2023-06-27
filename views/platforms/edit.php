@@ -21,12 +21,22 @@
             ?>
 
         <div class="col-12">
-            <h1 style="margin-top:2rem;">Biblioteca de Series</h1>
+            <h1 style="margin-top:2rem; margin-left: 1rem;">
+                <a class="text-decoration-none" href="../../index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
+            </h1>
 
-            <h3 style="margin-top:1.5em;">Editar plataforma</h3>
+            <h3 style="margin-top:2rem; margin-left: 1rem;">
+                <i class="bi bi-table"></i>
+                Editar una plataforma
+            </h3>
         </div>  
-
-        <div class="col-12">
+        <?php
+                if($platformObject) {
+            ?>
+        <div class="col-12" style="margin-left: 1rem;">
             <form name="edit_platform" action="" method="POST">
                 <div class="mb-3">
                     <label for="platformName" class="form-label">Nombre plataforma</label>
@@ -35,9 +45,7 @@
                 </div>
 
                 <button type="submit" value="Editar" class="btn btn-success" name="editBtn" style="float: right;">Editar</button>
-            </form>         
-        </div>        
-
+            </form>   
        
         <?php
             $sendData = false;
@@ -74,8 +82,16 @@
                 <?php
             }
         ?>
+        </div>
+         <?php
+                }
+                else {
+                $message = "El actor que deseas editar no existe.";
+                echo '<div class="alert alert-danger" role="alert" style="margin-top: 1rem;">' . $message . '</div>';
+            }
+        ?>
 
-        <div class="col-12" style="margin-top: 1em;">
+        <div class="col-12" style="margin-top: 1em; margin-left: 1rem;">
             <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="showAll.php">Atrás</a>
         </div> 
     </div>

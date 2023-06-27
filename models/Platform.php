@@ -34,6 +34,7 @@
 
     public function getItem()
     {
+      $itemObject = null;
       $mysqli = initConnectionDb();
       $query = $mysqli->query( query: "SELECT * FROM platforms WHERE id = " . $this->id);
 
