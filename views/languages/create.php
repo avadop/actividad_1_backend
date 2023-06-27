@@ -37,7 +37,7 @@
                     <input id="languageIsoCode" name="languageIsoCode" type="text" placeholder="Introduce el código ISO del idioma" class="form-control" required/>
                 </div>
 
-                <button type="submit" value="Crear" class="btn btn-success" name="createBtn" style="float: right;">Crear</button>
+                <button type="submit" value="Crear" class="btn btn-success" name="createLanguageBtn" style="float: right;">Crear</button>
             </form>         
         </div>        
 
@@ -47,7 +47,7 @@
             $sendData = false;
             $languageCreated = false;
 
-            if(isset($_POST['createBtn'])){        
+            if(isset($_POST['createLanguageBtn'])){        
                 $sendData = true;
             }
 

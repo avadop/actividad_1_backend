@@ -24,7 +24,7 @@
             if($platformDeleted){
             ?>
             <div class="row">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success" style="margin-top:2rem; margin-left: 1rem" role="alert">
                     La plataforma ha sido eliminada correctamente.
                 </div>
             </div>
@@ -32,7 +32,7 @@
             } else { 
                 ?>
                  <div class="row">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger" style="margin-top:2rem; margin-left: 1rem" role="alert">
                       No se ha podido eliminar la plataforma. Si alguna serie tiene la plataforma asociada no se podrá borrar. 
                     </div>
                 </div>
@@ -40,7 +40,7 @@
             }
         ?>
         <div>
-        <div class="col-12" style="margin-top: 1em;">
+        <div class="col-12" style="margin-top: 1em; margin-left: 1rem;">
             <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
         </div> 
     </div>

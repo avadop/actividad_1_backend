@@ -73,37 +73,24 @@ class Director{
 
     public static function deleteDirector($id) {
         $mysql = initConnectionDb();
-        $query = $mysql->query("DELETE FROM directors WHERE id=".$id);
 
-        $isSuccess = $query === TRUE;
+        $isSuccess = false;
+        // Nos aseguramos de que el actor existe para intentar borrar
+      if(Director:: getSingleDirector($id)){
+        //Hacemos try catch, en caso de que se quiera borrar y tenga una serie asociada, salta una excepción.
+        try { 
+            $query = $mysql->query("DELETE FROM directors WHERE id=".$id);
+
+          $isSuccess = $query === TRUE;
+        }
+        catch (Exception $e) {
+          $isSuccess = false;
+        }
+      }
 
         $mysql->close();
 
         return $isSuccess;
-    }
-
-    public static function saveDirector($name, $lastName, $dateOfBirth, $nationality) {
-        $mysql = initConnectionDb();
-
-        // Escape values to prevent SQL injection
-        $name = $mysql->real_escape_string($name);
-        $lastName = $mysql->real_escape_string($lastName);
-        $dateOfBirth = $mysql->real_escape_string($dateOfBirth);
-        $nationality = $mysql->real_escape_string($nationality);
-
-        // Build and execute the INSERT query
-        $query = "INSERT INTO directors ( _name, last_name, date_of_birth, nationality) VALUES ('$name', '$lastName', '$dateOfBirth', '$nationality')";
-        $result = $mysql->query($query);
-
-        if ($result) {
-            // Director saved successfully
-            echo "Director saved successfully.";
-        } else {
-            // Error occurred while saving director
-            echo "Error saving director: " . $mysql->error;
-        }
-
-        $mysql->close();
     }
 
     public static function getSingleDirector($directorId) {

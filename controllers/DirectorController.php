@@ -18,14 +18,19 @@ function deleteDirector($id) {
 }
 
 function saveDirector($name, $lastName, $dateOfBirth, $nationality) {
-    return Director::saveDirector($name, $lastName, $dateOfBirth, $nationality);
+    $creationSuccess = false;
+
+    // Comprobamos que al menos tenga los campos obligatorios
+    if($name && $lastName){
+        $newDirector = new Director(null,$name, $lastName, $dateOfBirth, $nationality);
+        $creationSuccess = $newDirector->createDirector();
+    }
+    return $creationSuccess;
 }
 
 function getDirectorById($idDirector) {
     return Director::getSingleDirector($idDirector);
   }
-
-
   
 ?>
 

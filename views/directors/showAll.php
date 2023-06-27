@@ -6,6 +6,8 @@
   <!-- Incluye los estilos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -24,8 +26,21 @@
 
                 if(count($directorList) > 0) {
             ?>
-            <h3 style="margin-top:1.5em;">Lista de todos los Directores</h3>
-            <table class="table" style="margin-top:2rem;">
+            <h1 style="margin-top:2rem; margin-left: 1rem;">
+              <a class="text-decoration-none" href="../../index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
+            </h1>
+
+            <h3 style="margin-top:2rem; margin-left: 1rem;">
+                <i class="bi bi-table"></i>
+                Listado de todos los directores
+            </h3>
+
+            <a class="btn btn-primary"style="margin-top:2rem; margin-left: 1rem;" href="./create.php">Añadir nuevo director</a>
+
+            <table class="table" style="margin-top:2rem; margin-left: 1rem;">
                 <thead>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -61,15 +76,15 @@
                     ?>
                 </tbody>
             </table>
-            <div>
-                <a class="btn btn-primary" href="../../index.html">Atras</a>
-            </div>              
+            <div class="col-12" style="margin-top:2rem; margin-left: 1rem">
+                <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="../../index.html">Atrás</a>
+            </div>               
 
             <?php
                 } else {
             ?>
 
-            <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:1.25rem;">
+            <div class="alert alert-warning" role="alert" style="margin-top:1rem;  font-size:1.25rem;">
                 There are no directors yet.
             </div>
             <?php

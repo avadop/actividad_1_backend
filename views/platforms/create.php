@@ -32,8 +32,7 @@
                     <label for="platformName" class="form-label">Nombre plataforma</label>
                     <input id="platformName" name="platformName" type="text" placeholder="Introduce el nombre de la plataforma" class="form-control" required/>
                 </div>
-
-                <input type="submit" value="Crear" class="btn btn-success" name="createBtn" style="float: right;">Crear</input>
+                <button type="submit" value="Crear" class="btn btn-success" name="createPlatformBtn" style="float: right; margin-top: 1rem;">Crear</button>
             </form>         
         </div>        
 
@@ -43,7 +42,7 @@
             $sendData = false;
             $platformCreated = false;
 
-            if(isset($_POST['createBtn'])){
+            if(isset($_POST['createPlatformBtn'])){
                 $sendData = true;
             }
 
