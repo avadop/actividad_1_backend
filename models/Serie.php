@@ -146,7 +146,7 @@ require_once('../../utils/databaseConnection.php');
       $serieTitle=$mysql->real_escape_string($serieTitle);
       $seriePlatform=$mysql->real_escape_string($seriePlatform);
       $serieDirector=$mysql->real_escape_string($serieDirector);
-      $serieActorsList=$mysql->real_escape_string($serieActorsList);
+      $serieActorsList = $mysql->real_escape_string(implode(',', $serieActorsList));
       $serieAudioLanguagesList=$mysql->real_escape_string($serieAudioLanguagesList);
       $serieSubtitlesLanguagesList=$mysql->real_escape_string($serieSubtitlesLanguagesList);
       $query = "INSERT INTO series (title, platform, director, audio_language, subtitles_language ) VALUES ('$serieTitle', '$seriePlatform', '$serieDirector', '$serieAudioLanguagesList','$serieSubtitlesLanguagesList')";
