@@ -5,16 +5,25 @@
   <title>Biblioteca de Series</title>
   <!-- Incluye los estilos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  
+   <!-- Bootstrap Font Icon CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="col-12">
-            <h1 style="margin-top:2rem; margin-left: 1rem;">Biblioteca de Series</h1>
+            <h1 style="margin-top:2rem; margin-left: 1rem;">
+                <a class="text-decoration-none" href="../../index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
+            </h1>
 
-            <h3 style="margin-top:2rem; margin-left: 1rem">Crear nueva plataformas</h3>
+            <h3 style="margin-top:2rem; margin-left: 1rem">
+                <i class="bi bi-plus-square-fill"></i>
+                Añadir una nueva plataforma
+            </h3>
         </div>  
 
         <div class="col-12" style="margin-top:2rem; margin-left: 1rem">

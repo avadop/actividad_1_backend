@@ -5,7 +5,8 @@
   <title>Biblioteca de Series</title>
   <!-- Incluye los estilos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <style>
@@ -17,16 +18,25 @@
         <div class="col-12">
             <?php
                 require_once('../../controllers/SerieController.php');
+                require_once('../../controllers/SeriesActorsController.php');
 
                 $serieList = listAllSeries();
-
+                
                 if(count($serieList) > 0) {
             ?>
              <h1 style="margin-top:2rem; margin-left: 1rem;">
-                <a class="text-decoration-none" href="../../index.html">Biblioteca de Series</a>
+                <a class="text-decoration-none" href="../../index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
              </h1>
 
-            <h3 style="margin-top:2rem; margin-left: 1rem;">Listado de todas las series</h3>
+            <h3 style="margin-top:2rem; margin-left: 1rem;">
+                <i class="bi bi-table"></i>
+                Listado de todas las series
+            </h3>
+
+            <a class="btn btn-primary"style="margin-top:2rem; margin-left: 1rem;" href="./create.php">Añadir nueva serie</a>
 
             <table class="table text-center" style="margin-top:2rem; margin-left: 1rem;">
                 <thead>
@@ -43,13 +53,24 @@
                     <?php
                         foreach($serieList as $serie)
                         {
+                            $actorsBySerieList = listActorsBySerie($serie->getId());
+
                     ?>
                     <tr>
                         <td><?php echo $serie->getId();?> </td>
                         <td><?php echo $serie->getTitle();?> </td>
                         <td><?php echo $serie->getPlatform();?> </td>
                         <td><?php echo $serie->getDirector();?> </td>
-                        <td><?php echo $serie->getActorsList();?> </td>
+                        <td><?php 
+                                // echo $serie->getActorsList();
+                                foreach($actorsBySerieList as $actor) {
+                                    echo $actor->getActorName();
+                                ?>
+                                <br>
+                            <?php
+                                }
+                            ?>                         
+                        </td>
                         <td><?php echo $serie->getAudioLanguagesList();?> </td>
                         <td><?php echo $serie->getSubtitlesLanguagesList();?> </td>
                         <td>

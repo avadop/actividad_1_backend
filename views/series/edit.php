@@ -5,7 +5,8 @@
   <title>Biblioteca de Series</title>
   <!-- Incluye los estilos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <!-- Incluye los scripts de Bootstrap y tu código JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -18,6 +19,7 @@
                 require_once('../../controllers/DirectorController.php');
                 require_once('../../controllers/ActorController.php');
                 require_once('../../controllers/LanguageController.php');
+                require_once('../../controllers/SeriesActorsController.php');
 
                 $platformList = listAllPlatforms();
                 $directorList = listAllDirectors();
@@ -27,14 +29,21 @@
 
                 $idserie = $_GET['id'];
                 $serieObject = getSerieData($idserie);
+                $actorsBySerieList = listActorsBySerie($idserie);
             ?>
 
         <div class="col-12">
             <h1 style="margin-top:2rem; margin-left: 1rem;">
-                <a class="text-decoration-none" href="index.html">Biblioteca de Series</a>
+                <a class="text-decoration-none" href="../..index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
              </h1>
 
-            <h3 style="margin-top:2rem; margin-left: 1rem;">Editar serie</h3>
+            <h3 style="margin-top:2rem; margin-left: 1rem;">
+                <i class="bi bi-pencil-fill"></i>
+                Editar serie
+            </h3>
         </div>  
 
         <div class="col-12" style="margin-top:2rem; margin-left: 1rem;">
@@ -76,23 +85,33 @@
                 </div>
                 <div class="mb-3">
                     <label for="serieActor" class="form-label">Actores</label>
-                    <select id="serieActor" name="serieActor[]" class="form-select" aria-label="Select actores" multiple>
-                        
-                        <?php
-                            foreach($actorList as $actor)
-                            {
-                                $nombreActor = $actor->getName().' '.$actor->getSurnames();
-                        ?>
-                        <option value="<?php echo $actor->getId();?> "><?php echo $nombreActor;?> </option>
-                        <?php
+                    <div id="serieActores" class="checkbox-list">
+                    <?php
+                    foreach ($actorList as $actor) {
+                                               
+                        $nombreActor = $actor->getName() . ' ' . $actor->getSurnames();
+                        $isChecked = false;
+
+                        foreach ($actorsBySerieList as $actorBySerie) {
+             
+                            if ($actorBySerie->getActor() === $actor->getId()) {
+                                $isChecked = true;
+                                break;
                             }
-                        ?>
-                    </select>
+                        }
+                    ?>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="actor_<?php echo $actor->getId(); ?>" name="serieActores[]" value="<?php echo $actor->getId(); ?>" <?php if ($isChecked) echo "checked"; ?>>
+                            <label for="actor_<?php echo $actor->getId(); ?>"><?php echo $nombreActor; ?></label>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
 
                 <div class="mb-3">
                     <label for="serieLanguageAudio" class="form-label">Idiomas disponibles audio</label>
-                    <select id="serieLanguageAudio" name="serieLanguageAudio[]" class="form-select" aria-label="Select language audio" multiple>
+                    <select id="serieLanguageAudio" name="serieLanguageAudio" class="form-select" aria-label="Select language audio">
                         
                         <?php
                             foreach($languageList as $language)
@@ -108,7 +127,7 @@
 
                 <div class="mb-3">
                     <label for="serieLanguageSubtitles" class="form-label">Idiomas disponibles subtítulos</label>
-                    <select id="serieLanguageSubtitles" name="serieLanguageSubtitles[]" class="form-select" aria-label="Select language subtitles" multiple>
+                    <select id="serieLanguageSubtitles" name="serieLanguageSubtitles" class="form-select" aria-label="Select language subtitles">
                         
                         <?php
                             foreach($languageList as $language)
@@ -130,19 +149,38 @@
        
         <?php
             $sendData = false;
-            $serieEdited = false;
+            $deletedSerieActor = false;
+            $createdSerieActor = false;
 
             if(isset($_POST['editBtn'])){
                 $sendData = true;
             }
 
             if($sendData) {
-                if(isset($_POST['serieTitle']) && isset($_POST['seriePlatform']) && isset($_POST['serieDirector']) && isset($_POST['serieActor']) && isset($_POST['serieLanguageAudio']) && isset($_POST['serieLanguageSubtitles'])){
-                    $serieEdited = updateSerie($_POST['serieId'], $_POST['serieTitle'], $_POST['seriePlatform'], $_POST['serieDirector'], $_POST['serieActor'], $_POST['serieLanguageAudio'], $_POST['serieLanguageSubtitles']);
+                if(isset($_POST['serieTitle']) && isset($_POST['seriePlatform']) && isset($_POST['serieDirector']) && isset($_POST['serieActores']) && isset($_POST['serieLanguageAudio']) && isset($_POST['serieLanguageSubtitles'])){
+                    $selectedActors = $_POST['serieActores'];
+                  
+                    if (is_array($selectedActors)) {
+
+                        foreach ($actorsBySerieList as $serieActor) {
+                            /*
+                            echo "IDs serieActor: " . $serieActor->getId() . "</br>";
+                            echo "getSerie(): " . $serieActor->getSerie() . "</br>";
+                            echo "getActor(): " . $serieActor->getActor() . "</br>";
+                            */
+                            $deletedSerieActor = deleteSerieActor($serieActor->getId());
+
+                        }
+
+                        foreach ($selectedActors as $actorId) {
+                            // echo "IDs selected: " . $actorId . "</br>";                            
+                            $createdSerieActor = storeSerieActor($idserie, $actorId);
+                        }
+                    }
                 }
             }
 
-            if($serieEdited) {
+            if($deletedSerieActor && $createdSerieActor) {
             ?>
             <div class="row" style="margin-top:2rem; margin-left: 1rem;">
                 <div class="alert alert-success" role="alert">
@@ -164,7 +202,7 @@
         ?>
 
         <div class="col-12" style="margin-top:2rem; margin-left: 1rem;">
-            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="javascript:history.back()">Atrás</a>
+            <a class="btn btn-outline-primary" style="font-weight: 700; border-width: 3px;" href="showAll.php">Atrás</a>
         </div> 
     </div>
 </body>
