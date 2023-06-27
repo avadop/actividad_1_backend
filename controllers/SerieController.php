@@ -25,4 +25,7 @@
      function deleteSerie($id) {
         return Serie::deleteSerie($id);
     }
+    function saveSeries($serieTitle, $seriePlatform, $serieDirector, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList) {
+        return Serie::saveSeries($serieTitle, $seriePlatform, $serieDirector, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList);
+    }
 ?>
