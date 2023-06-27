@@ -81,15 +81,19 @@
     public function store()
     {
       $languageCreated = false;
-      $mysqli = initConnectionDb();
+      // Si no hay un idioma todavía con ese nombre y apellido, lo crea
+      if(!$this->languageAlreadyExists()) {
+        $mysqli = initConnectionDb();
 
-      $insert = $mysqli->query( query: "INSERT INTO languages (`name`, `iso_code`) VALUES ('$this->name', '$this->isoCode')");
-     
-      if($insert) {
-        $languageCreated = true;
+        $insert = $mysqli->query( query: "INSERT INTO languages (`name`, `iso_code`) VALUES ('$this->name', '$this->isoCode')");
+      
+        if($insert) {
+          $languageCreated = true;
+        }
+
+        $mysqli->close();
       }
 
-      $mysqli->close();
       return $languageCreated;
     }
 
@@ -135,6 +139,17 @@
       $mysqli->close();
       return $languageDeleted;
     }
+    private function languageAlreadyExists() {
+      $mysql = initConnectionDb();
 
+      $query = "SELECT * FROM languages WHERE name='$this->name' AND iso_code='$this->isoCode';";
+      $queryResult = $mysql->query($query);
+
+      $totalElements = mysqli_num_rows( $queryResult);
+
+      $mysql->close();
+
+      return $totalElements > 0;
+    }
   }
 ?>

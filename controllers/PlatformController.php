@@ -25,8 +25,13 @@
 
     function updatePlatform($platformId, $platformName)
     {
-        $newPlatform = new Platform($platformId, $platformName);
-        $platformCreated = $newPlatform->update();
+        $platformCreated = false;
+
+        if($platformName) {
+            $newPlatform = new Platform($platformId, $platformName);
+            $platformCreated = $newPlatform->update();
+        }
+        
 
         return $platformCreated;
     }

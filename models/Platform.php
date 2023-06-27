@@ -70,13 +70,16 @@
     {
 
       $platformCreated = false;
-      $mysqli = initConnectionDb();
+      // Si no hay una plataforma todavía con ese nombre y apellido, lo crea
+      if(!$this->platformAlreadyExists()) {
+        $mysqli = initConnectionDb();
 
-      if($resultInsert = $mysqli->query( query: "INSERT INTO platforms (name) VALUES (' $this->name ')")) {
-        $platformCreated = true;
+        if($mysqli->query( query: "INSERT INTO platforms (name) VALUES (' $this->name ')")) {
+          $platformCreated = true;
+        }
+
+        $mysqli->close();
       }
-
-      $mysqli->close();
       return $platformCreated;
     }
 
@@ -122,6 +125,19 @@
 
       $mysqli->close();
       return $platformDeleted;
+    }
+
+    private function platformAlreadyExists() {
+      $mysql = initConnectionDb();
+
+      $query = "SELECT * FROM platforms WHERE name='$this->name';";
+      $queryResult = $mysql->query($query);
+
+      $totalElements = mysqli_num_rows( $queryResult);
+
+      $mysql->close();
+
+      return $totalElements > 0;
     }
   }
 ?>

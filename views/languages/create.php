@@ -69,7 +69,7 @@
                 ?>
                  <div class="row" style="margin-top:2rem; margin-left: 1rem">
                     <div class="alert alert-danger" role="alert">
-                      No se ha podido crear el idioma.
+                      No se ha podido crear el idioma. Compruebe que no exista un idioma ya con esos datos.
                     </div>
                 </div>
                 <?php

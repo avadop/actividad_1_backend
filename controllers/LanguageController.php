@@ -17,8 +17,12 @@
 
  function storeLanguage($languageName, $languageIsoCode)
   {
-      $newLanguage = new Language(null, $languageName, $languageIsoCode);
-      $languageCreated = $newLanguage->store();
+     $languageCreated = false;
+
+     if($languageName && $languageIsoCode) {
+        $newLanguage = new Language(null, $languageName, $languageIsoCode);
+        $languageCreated = $newLanguage->store();
+     }
 
       return $languageCreated;
   }

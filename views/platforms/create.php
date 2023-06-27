@@ -64,7 +64,7 @@
                 ?>
                  <div class="row" style="margin-top:2rem; margin-left: 1rem">
                     <div class="alert alert-danger" role="alert">
-                      No se ha podido crear la plataforma.
+                      No se ha podido crear la plataforma. Compruebe que no exista una plataforma ya con esos datos.
                     </div>
                 </div>
                 <?php

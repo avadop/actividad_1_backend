@@ -110,11 +110,11 @@ require_once('../../utils/databaseConnection.php');
     }
 
     public function editActor() {
-      $mysql = initConnectionDb();
       $isSuccess = false;
 
       // Comprueba que exista el objeto con ese id.
       if(Actor::getSingleActor($this->id)) {
+        $mysql = initConnectionDb();
         $birthDateCheck = $this->birthDate ? "'$this->birthDate'": 'NULL';
         $nacionalityCheck = $this->nacionality ? "'$this->nacionality'": 'NULL';
   
@@ -122,9 +122,9 @@ require_once('../../utils/databaseConnection.php');
         $queryResult = $mysql->query($query);
   
         $isSuccess = $queryResult === TRUE;
+  
+        $mysql->close();
       }
-
-      $mysql->close();
 
       return $isSuccess;
     }

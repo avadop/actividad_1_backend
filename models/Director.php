@@ -110,11 +110,11 @@ class Director{
     }
 
     public function editDirector() {
-        $mysql = initConnectionDb();
         $isSuccess = false;
 
         // Check if an object with that id exists
         if (Director::getSingleDirector($this->id)) {
+            $mysql = initConnectionDb();
             $dateOfBirthCheck = $this->dateOfBirth ? "'$this->dateOfBirth'" : 'NULL';
             $nationalityCheck = $this->nationality ? "'$this->nationality'" : 'NULL';
 
@@ -122,9 +122,9 @@ class Director{
             $queryResult = $mysql->query($query);
 
             $isSuccess = $queryResult === TRUE;
+            $mysql->close();
         }
 
-        $mysql->close();
 
         return $isSuccess;
     }
