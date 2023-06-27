@@ -80,7 +80,8 @@ require_once('../../utils/databaseConnection.php');
     public function getItem()
     {
       $mysqli = initConnectionDb();
-      $query = $mysqli->query( query: "SELECT * FROM series WHERE id = " . $this->id);
+      $query = $mysqli->query("SELECT * FROM series WHERE id = " . $this->id);
+
 
      foreach($query as $item) {
         $itemObject = new Serie($item['id'], $item['title'], $item['platform'], $item['director'], $item['actors'], $item['audio_language'], $item['subtitles_language']);
@@ -95,7 +96,7 @@ require_once('../../utils/databaseConnection.php');
     {
         $mysqli = initConnectionDb();
         
-        $query = $mysqli->query( query: 'SELECT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d.name, d.surnames) as director, CONCAT(a.name, a.surnames) as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN actors a on a.id=s.actors INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;');
+        $query = $mysqli->query('SELECT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d.name, d.surnames) as director, CONCAT(a.name, a.surnames) as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN actors a on a.id=s.actors INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;');
         $listData = [];
       
         if ($query) {
@@ -118,7 +119,7 @@ require_once('../../utils/databaseConnection.php');
       $serie = $this->getItem();
       
       if($serie) {
-        $update = $mysqli->query( query: "UPDATE series SET title = '" . $this->title . "', platform = '" . $this->platform . "', director = '" . $this->director . "', actors = '" . $this->actors . "', audio_language = '" . $this->audio_language . "', subtitles_language = '" . $this->subtitles_language . "' WHERE id=" . $this->id);
+        $update = $mysqli->query("UPDATE series SET title = '" . $this->title . "', platform = '" . $this->platform . "', director = '" . $this->director . "', actors = '" . $this->actors . "', audio_language = '" . $this->audio_language . "', subtitles_language = '" . $this->subtitles_language . "' WHERE id=" . $this->id);
 
         if($update){
           $serieEdited = true;
@@ -138,6 +139,30 @@ require_once('../../utils/databaseConnection.php');
       $mysql->close();
 
       return $isSuccess;
+    }
+    public static function saveSeries($serieTitle, $seriePlatform, $serieDirector, $serieActorsList, $serieAudioLanguagesList, $serieSubtitlesLanguagesList)
+    {
+      $mysql = initConnectionDb();
+      $serieTitle=$mysql->real_escape_string($serieTitle);
+      $seriePlatform=$mysql->real_escape_string($seriePlatform);
+      $serieDirector=$mysql->real_escape_string($serieDirector);
+      $serieActorsList=$mysql->real_escape_string($serieActorsList);
+      $serieAudioLanguagesList=$mysql->real_escape_string($serieAudioLanguagesList);
+      $serieSubtitlesLanguagesList=$mysql->real_escape_string($serieSubtitlesLanguagesList);
+      $query = "INSERT INTO series (title, platform, director, audio_language, subtitles_language ) VALUES ('$serieTitle', '$seriePlatform', '$serieDirector', '$serieAudioLanguagesList','$serieSubtitlesLanguagesList')";
+      $query2 = "INSERT INTO series_actors(serie, actor) VALUES('$serieTitle', '$serieActorsList')";
+      $result = $mysql->query($query);
+      $result2 = $mysql->query($query2);
+
+      if ($result && $result2) {
+        // Serie saved successfully
+        echo "Serie Añadida Correctamente.";
+    } else {
+        // Error occurred while saving serie
+        echo "Error al añadir serie: " . $mysql->error;
+    }
+
+    $mysql->close();
     }
   }
 ?>
