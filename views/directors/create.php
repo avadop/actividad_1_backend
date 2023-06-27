@@ -44,6 +44,7 @@
                         if($creationSuccess){
                             $message = "Director guardado exitosamente.";
                             echo '<div class="alert alert-success" role="alert" style="margin-top: 1rem;">' . $message . '</div>';
+                            header( "refresh:1.5;url=showAll.php" );
                         }
                         else {
                             $message = "Hubo algún problema al crear el director, compruebe que no existe otro director con el mismo nombre y apellido";
