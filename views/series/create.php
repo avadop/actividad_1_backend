@@ -71,7 +71,7 @@
                 <div class="mb-3">
                     <label for="seriePlatform" class="form-label">Plataforma</label>
                     <select id="seriePlatform" name="seriePlatform" class="form-select" aria-label="Select platforms">
-                        
+                        <option value="0">Seleciona la plataforma</option>
                         <?php
                             foreach($platformList as $platform)
                             {
@@ -85,7 +85,7 @@
                 <div class="mb-3">
                     <label for="serieDirector" class="form-label">Director</label>
                     <select id="serieDirector" name="serieDirector" class="form-select" aria-label="Select directors">
-                        
+                        <option value="0">Seleciona el director</option>
                         <?php
                             foreach($directorList as $director)
                             {
@@ -118,7 +118,7 @@
                 <div class="mb-3">
                     <label for="serieLanguageAudio" class="form-label">Idiomas disponibles audio</label>
                     <select id="serieLanguageAudio" name="serieLanguageAudio" class="form-select" aria-label="Select language audio">
-                        
+                        <option value="0">Seleciona el idioma del audio</option>
                         <?php
                             foreach($languageList as $language)
                             {
@@ -134,7 +134,7 @@
                 <div class="mb-3">
                     <label for="serieLanguageSubtitles" class="form-label">Idiomas disponibles subtítulos</label>
                     <select id="serieLanguageSubtitles" name="serieLanguageSubtitles" class="form-select" aria-label="Select language subtitles">
-                        
+                        <option value="0">Seleciona el idioma de los subtítulos</option>
                         <?php
                             foreach($languageList as $language)
                             {
