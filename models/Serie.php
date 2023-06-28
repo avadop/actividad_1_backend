@@ -75,6 +75,19 @@ require_once('../../utils/databaseConnection.php');
     public function setSubtitlesLanguagesList($newSubtitlesLanguagesList) {
       $this->subtitlesLanguagesList = $newSubtitlesLanguagesList;
     }
+	
+	public static function getSerieId($serieTitle, $seriePlatform, $serieDirector, $serieAudioLanguagesList, $serieSubtitlesLanguagesList) {
+		$mysqli = initConnectionDb();
+		$query = $mysqli->query(query: "SELECT id FROM series WHERE title = '$serieTitle' and platform = 'seriePlatform' and director = '$serieDirector' and audioLanguagesList = '$serieAudioLanguagesList' and subtitlesLanguagesList = '$serieSubtitlesLanguagesList'");
+		
+		 if ($query && $query->num_rows > 0) {
+			$row = $query->fetch_assoc();
+			$serieId = $row['id'];
+			return $serieId;
+		}
+    
+		return false;
+	}
 
 
     public function getItem()
@@ -84,7 +97,7 @@ require_once('../../utils/databaseConnection.php');
 
 
      foreach($query as $item) {
-        $itemObject = new Serie($item['id'], $item['title'], $item['platform'], $item['director'], $item['actors'], $item['audio_language'], $item['subtitles_language']);
+        $itemObject = new Serie($item['id'], $item['title'], $item['platform'], $item['director'], '', $item['audio_language'], $item['subtitles_language']);
         break;
       }
       
@@ -146,15 +159,14 @@ require_once('../../utils/databaseConnection.php');
       $serieTitle=$mysql->real_escape_string($serieTitle);
       $seriePlatform=$mysql->real_escape_string($seriePlatform);
       $serieDirector=$mysql->real_escape_string($serieDirector);
-      $serieActorsList = $mysql->real_escape_string(implode(',', $serieActorsList));
       $serieAudioLanguagesList=$mysql->real_escape_string($serieAudioLanguagesList);
       $serieSubtitlesLanguagesList=$mysql->real_escape_string($serieSubtitlesLanguagesList);
-      $query = "INSERT INTO series (title, platform, director, audio_language, subtitles_language ) VALUES ('$serieTitle', '$seriePlatform', '$serieDirector', '$serieAudioLanguagesList','$serieSubtitlesLanguagesList')";
-      $query2 = "INSERT INTO series_actors(serie, actor) VALUES('$serieTitle', '$serieActorsList')";
-      $result = $mysql->query($query);
-      $result2 = $mysql->query($query2);
+      
+	  $query = "INSERT INTO series (title, platform, director, audio_language, subtitles_language ) VALUES ('$serieTitle', '$seriePlatform', '$serieDirector', '$serieAudioLanguagesList','$serieSubtitlesLanguagesList')";
+      
+	  $result = $mysql->query($query);
 
-      if ($result && $result2) {
+      if ($result) {
         // Serie saved successfully
         echo "Serie Añadida Correctamente.";
     } else {

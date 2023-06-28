@@ -64,7 +64,7 @@
         {
             $mysqli = initConnectionDb();
             
-            $query = $mysqli->query( query: 'SELECT sa.id, s.id as id_serie, a.id as id_actor, CONCAT(a.name, a.surnames) as actor from series_actors sa INNER JOIN series s on s.id=sa.serie INNER JOIN actors a on a.id=sa.actor where sa.serie="' . $serieId . '"');
+            $query = $mysqli->query( query: "SELECT sa.id, s.id as id_serie, a.id as id_actor, CONCAT(a.name, ' ', a.surnames) as actor from series_actors sa INNER JOIN series s on s.id=sa.serie INNER JOIN actors a on a.id=sa.actor where sa.serie=" . $serieId);
             $listData = [];
         
             if ($query) {

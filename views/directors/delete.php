@@ -17,6 +17,17 @@
 <body>
     <div class="container">
         <div class="col-12">
+			<h1 style="margin-top:2rem; margin-left: 1rem;">
+                <a class="text-decoration-none" href="../../index.html">
+                    <i class="bi bi-collection-play"></i>    
+                    Biblioteca de Series
+                </a>
+             </h1>
+
+            <h3 style="margin-top:2rem; margin-left: 1rem;">
+                <i class="bi bi-trash3-fill"></i>
+                Borrado de director
+            </h3>
             <?php
                 require_once('../../controllers/DirectorController.php');
                 

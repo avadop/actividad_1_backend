@@ -75,7 +75,7 @@
                         <?php
                             foreach($directorList as $director)
                             {
-                                $nombreDirector = $director->getName().' '.$director->getSurnames();
+                                $nombreDirector = $director->getName().' '.$director->getLastName();
                         ?>
                         <option value="<?php echo $director->getId();?> "><?php echo $nombreDirector;?> </option>
                         <?php
