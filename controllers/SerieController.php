@@ -41,7 +41,7 @@
 			
 			if($serieId !== false) {
 				foreach($serieActorsList as $serieActor) {
-					storeSerieActor($serieId, $seriesActor->getId());
+					storeSerieActor($serieId, $serieActor);
 				}
 			}
 		}

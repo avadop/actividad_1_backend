@@ -181,6 +181,7 @@
             }
 
             if($deletedSerieActor && $createdSerieActor) {
+                header( "refresh:1.5;url=showAll.php" );
             ?>
             <div class="row" style="margin-top:2rem; margin-left: 1rem;">
                 <div class="alert alert-success" role="alert">
