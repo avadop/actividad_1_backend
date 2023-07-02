@@ -49,7 +49,7 @@
       $mysqli = initConnectionDb();
       $itemObject = null;
 
-      $query = $mysqli->query( query: "SELECT * FROM languages WHERE id = " . $this->id);
+      $query = $mysqli->query("SELECT * FROM languages WHERE id = " . $this->id);
 
      foreach($query as $item) {
         $itemObject = new Language($item['id'], $item['name'], $item['iso_code']);
@@ -64,7 +64,7 @@
     {
         $mysqli = initConnectionDb();
         
-        $query = $mysqli->query( query: 'SELECT * FROM languages');
+        $query = $mysqli->query('SELECT * FROM languages');
         $listData = [];
       
         if ($query) {
@@ -85,7 +85,7 @@
       if(!$this->languageAlreadyExists()) {
         $mysqli = initConnectionDb();
 
-        $insert = $mysqli->query( query: "INSERT INTO languages (`name`, `iso_code`) VALUES ('$this->name', '$this->isoCode')");
+        $insert = $mysqli->query("INSERT INTO languages (`name`, `iso_code`) VALUES ('$this->name', '$this->isoCode')");
       
         if($insert) {
           $languageCreated = true;
@@ -106,7 +106,7 @@
       $platform = $this->getItem();
       
       if($platform) {
-        $update = $mysqli->query( query: "UPDATE languages SET name = '" . $this->name . "', iso_code = '" . $this->isoCode . "'WHERE id=" . $this->id);
+        $update = $mysqli->query("UPDATE languages SET name = '" . $this->name . "', iso_code = '" . $this->isoCode . "'WHERE id=" . $this->id);
 
         if($update){
           $languageEdited = true;
@@ -126,7 +126,7 @@
 
       if($language) {
         try{
-          $deleted = $mysqli->query( query: "DELETE FROM languages WHERE id=" . $this->id);
+          $deleted = $mysqli->query("DELETE FROM languages WHERE id=" . $this->id);
 
           if($deleted){
             $languageDeleted = true;
