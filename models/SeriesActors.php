@@ -49,7 +49,7 @@
         public function getItem()
         {
           $mysqli = initConnectionDb();
-          $query = $mysqli->query( query: "SELECT * FROM series_actors WHERE id = " . $this->id);
+          $query = $mysqli->query("SELECT * FROM series_actors WHERE id = " . $this->id);
     
          foreach($query as $item) {
             $itemObject = new SeriesActors($item['id'], $item['serie'], $item['actor'], '');
@@ -64,7 +64,7 @@
         {
             $mysqli = initConnectionDb();
             
-            $query = $mysqli->query( query: "SELECT sa.id, s.id as id_serie, a.id as id_actor, CONCAT(a.name, ' ', a.surnames) as actor from series_actors sa INNER JOIN series s on s.id=sa.serie INNER JOIN actors a on a.id=sa.actor where sa.serie=" . $serieId);
+            $query = $mysqli->query("SELECT sa.id, s.id as id_serie, a.id as id_actor, CONCAT(a.name, ' ', a.surnames) as actor from series_actors sa INNER JOIN series s on s.id=sa.serie INNER JOIN actors a on a.id=sa.actor where sa.serie=" . $serieId);
             $listData = [];
         
             if ($query) {
@@ -85,7 +85,7 @@
           $serieActorCreated = false;
           $mysqli = initConnectionDb();
     
-          if($resultInsert = $mysqli->query( query: "INSERT INTO series_actors (serie, actor) VALUES (' $this->serie ', ' $this->actor ')")) {
+          if($resultInsert = $mysqli->query("INSERT INTO series_actors (serie, actor) VALUES (' $this->serie ', ' $this->actor ')")) {
             $serieActorCreated = true;
           }
     
@@ -102,7 +102,7 @@
           $platform = $this->getItem();
           
           if($platform) {
-            $update = $mysqli->query( query: "UPDATE series_actors SET serie = '" . $this->serie . "' actor = '" . $this->actor . "' WHERE id=" . $this->id);
+            $update = $mysqli->query("UPDATE series_actors SET serie = '" . $this->serie . "' actor = '" . $this->actor . "' WHERE id=" . $this->id);
     
             if($update){
               $serieActorEdited = true;
@@ -121,7 +121,7 @@
           $serieActor = $this->getItem();
     
           if($serieActor) {
-            $deleted = $mysqli->query( query: "DELETE FROM series_actors WHERE id=" . $this->id);
+            $deleted = $mysqli->query("DELETE FROM series_actors WHERE id=" . $this->id);
     
             if($deleted){
               $serieActorDeleted = true;
