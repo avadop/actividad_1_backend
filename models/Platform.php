@@ -36,7 +36,7 @@
     {
       $itemObject = null;
       $mysqli = initConnectionDb();
-      $query = $mysqli->query( query: "SELECT * FROM platforms WHERE id = " . $this->id);
+      $query = $mysqli->query("SELECT * FROM platforms WHERE id = " . $this->id);
 
      foreach($query as $item) {
         $itemObject = new Platform($item['id'], $item['name']);
@@ -51,7 +51,7 @@
     {
         $mysqli = initConnectionDb();
         
-        $query = $mysqli->query( query: 'SELECT * FROM platforms');
+        $query = $mysqli->query('SELECT * FROM platforms');
         $listData = [];
       
         if ($query) {
@@ -74,7 +74,7 @@
       if(!$this->platformAlreadyExists()) {
         $mysqli = initConnectionDb();
 
-        if($mysqli->query( query: "INSERT INTO platforms (name) VALUES (' $this->name ')")) {
+        if($mysqli->query("INSERT INTO platforms (name) VALUES (' $this->name ')")) {
           $platformCreated = true;
         }
 
@@ -92,7 +92,7 @@
       $platform = $this->getItem();
       
       if($platform) {
-        $update = $mysqli->query( query: "UPDATE platforms SET name = '" . $this->name . "' WHERE id=" . $this->id);
+        $update = $mysqli->query("UPDATE platforms SET name = '" . $this->name . "' WHERE id=" . $this->id);
 
         if($update){
           $platformEdited = true;
@@ -112,7 +112,7 @@
 
       if($platform) {
         try {
-          $deleted = $mysqli->query( query: "DELETE FROM platforms WHERE id=" . $this->id);
+          $deleted = $mysqli->query("DELETE FROM platforms WHERE id=" . $this->id);
 
           if($deleted){
             $platformDeleted = true;
