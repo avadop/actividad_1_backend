@@ -78,7 +78,7 @@ require_once('../../utils/databaseConnection.php');
 	
 	public static function getSerieId($serieTitle, $seriePlatform, $serieDirector, $serieAudioLanguagesList, $serieSubtitlesLanguagesList) {
 		$mysqli = initConnectionDb();
-		$query = $mysqli->query(query: "SELECT id FROM series WHERE title = '$serieTitle' and platform = '$seriePlatform' and director = '$serieDirector' and audio_language = '$serieAudioLanguagesList' and subtitles_language = '$serieSubtitlesLanguagesList'");
+		$query = $mysqli->query("SELECT id FROM series WHERE title = '$serieTitle' and platform = '$seriePlatform' and director = '$serieDirector' and audio_language = '$serieAudioLanguagesList' and subtitles_language = '$serieSubtitlesLanguagesList'");
 		
 		 if ($query && $query->num_rows > 0) {
 			$row = $query->fetch_assoc();
@@ -109,7 +109,7 @@ require_once('../../utils/databaseConnection.php');
     {
         $mysqli = initConnectionDb();
         
-        $query = $mysqli->query( query: "SELECT DISTINCT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d._name,' ', d.last_name) as director, '' as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;");
+        $query = $mysqli->query("SELECT DISTINCT s.id as id, s.title as titulo, p.name as plataforma, CONCAT(d._name,' ', d.last_name) as director, '' as actor, la.name as idioma_audio, ls.name as idioma_subtitulos from series s INNER JOIN platforms p on p.id=s.platform INNER JOIN directors d on d.id=s.director INNER JOIN languages la on la.id=s.audio_language INNER JOIN languages ls on ls.id=s.subtitles_language;");
         $listData = [];
       
         if ($query) {
